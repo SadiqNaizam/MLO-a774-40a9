@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
 
 export default {
 	darkMode: ["class"],
@@ -61,13 +62,29 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+        // Direct color definitions from PRD colorPalette
+        // These can be used directly with Tailwind classes like bg-app-background, text-primary-text-color etc.
+        'app-background': '#F3F3F9',
+        'surface': '#FFFFFF',
+        'sidebar-theme': '#E9ECEF', // Explicit name for PRD sidebar color
+        'primary-text-color': '#212529',
+        'secondary-text-color': '#6C757D',
+        'accent-blue': '#0D6EFD',
+        'accent-red': '#DC3545',
+        'accent-yellow': '#FFC107',
+        'accent-green': '#198754',
+        'border-color': '#DEE2E6'
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+        // As per Shadcn convention, mapping to --radius CSS variable
+				lg: 'var(--radius)', // will be 0.375rem if --radius is 0.375rem
+				md: 'calc(var(--radius) - 2px)', // will be 0.375rem - 2px
+				sm: 'calc(var(--radius) - 4px)'  // will be 0.375rem - 4px
 			},
+      fontFamily: {
+        sans: ['var(--font-sans)', ...fontFamily.sans],
+      },
 			keyframes: {
 				'accordion-down': {
 					from: {
